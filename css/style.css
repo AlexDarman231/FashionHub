@@ -1,0 +1,311 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style-type: none;
+}
+
+/* Header & Navbar */
+header {
+    background-color: #f0f0f0;
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav h1 {
+    font-size: 1.8rem;
+    color: #333;
+}
+
+.menu-toggle {
+    display: none; /* Hidden by default, shown in media query */
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #333;
+}
+
+nav ul#main-nav-links {
+    display: flex;
+}
+
+nav ul#main-nav-links li {
+    margin-left: 1.5rem;
+}
+
+nav ul#main-nav-links li a {
+    padding: 0.5rem;
+    color: #555;
+    font-weight: bold;
+}
+
+nav ul#main-nav-links li a:hover {
+    color: #007bff;
+    text-decoration: underline;
+}
+
+/* Hero Section */
+#hero {
+    background-color: #e0e0e0;
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+#hero h2 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+#hero p {
+    font-size: 1.2rem;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Product Grid Section */
+#product-grid {
+    padding: 2rem;
+    text-align: center;
+}
+
+#product-grid > h2 { /* Direct child selector to avoid styling h2 in cards if any */
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 2rem;
+}
+
+#product-grid .product-container { /* Renamed div to .product-container for clarity */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.product-card {
+    border: 1px solid #ccc;
+    padding: 1rem;
+    background-color: #fff;
+    width: 300px; /* Default width for larger screens */
+    text-align: left;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column; /* Ensure consistent internal layout */
+}
+
+.product-card div:first-child { /* Image Placeholder */
+    height: 200px;
+    background-color: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #777;
+    margin-bottom: 1rem;
+    font-style: italic;
+}
+
+.product-card h3 {
+    font-size: 1.3rem;
+    color: #444;
+    margin-bottom: 0.5rem;
+}
+
+.product-card p {
+    font-size: 1.1rem;
+    color: #007bff; /* Price color */
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 2rem;
+    text-align: center;
+}
+
+footer p {
+    margin-bottom: 0.5rem;
+}
+
+footer div {
+    margin-bottom: 0.5rem;
+}
+
+footer div:last-child {
+    margin-bottom: 0;
+}
+
+/* Responsive Styles */
+
+/* Common mobile and tablet adjustments */
+@media (max-width: 1024px) {
+    header {
+        padding: 1rem;
+    }
+    #hero {
+        padding: 3rem 1rem;
+    }
+    #hero h2 {
+        font-size: 2rem;
+    }
+    #hero p {
+        font-size: 1rem;
+    }
+    #product-grid {
+        padding: 1.5rem 1rem;
+    }
+    #product-grid > h2 {
+        font-size: 1.8rem;
+    }
+}
+
+/* Tablet specific adjustments (e.g., 2 cards per row) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    #product-grid .product-container {
+        /* Allow two cards to fit, considering gap and card width */
+        /* Example: if card width is 300px, 2 cards = 600px + gap. Container needs to be wide enough. */
+        /* This is tricky without knowing exact parent width. Let's make cards a bit more flexible. */
+    }
+    .product-card {
+         width: calc(50% - 1rem); /* 2 cards per row, accounting for gap */
+    }
+}
+
+
+/* Mobile specific adjustments (up to 768px) */
+@media (max-width: 768px) {
+    nav {
+        flex-wrap: wrap; /* Allow items to wrap */
+    }
+
+    .menu-toggle {
+        display: block; /* Show hamburger menu */
+        order: 1; 
+        margin-left: auto; 
+    }
+
+    nav h1 {
+        order: 0; 
+        font-size: 1.5rem; /* Slightly smaller logo on mobile */
+    }
+
+    nav ul#main-nav-links {
+        display: none; 
+        flex-direction: column;
+        width: 100%; 
+        text-align: center;
+        order: 2; 
+        margin-top: 1rem; 
+    }
+
+    nav ul#main-nav-links.nav-active {
+        display: flex; 
+    }
+
+    nav ul#main-nav-links li {
+        margin-left: 0;
+        margin-bottom: 0.5rem; 
+    }
+
+    nav ul#main-nav-links li a {
+        display: block; 
+        padding: 0.75rem;
+        border-bottom: 1px solid #ddd;
+    }
+    nav ul#main-nav-links li:last-child a {
+        border-bottom: none;
+    }
+
+    /* Hero section mobile */
+    #hero {
+        padding: 2rem 1rem;
+    }
+    #hero h2 {
+        font-size: 1.8rem;
+    }
+    #hero p {
+        font-size: 0.9rem;
+    }
+
+    /* Product grid mobile - cards stack vertically */
+    #product-grid .product-container {
+        flex-direction: column;
+        align-items: center; /* Center cards when stacked */
+    }
+    .product-card {
+        width: 90%; /* Full width when stacked, with some margin */
+        max-width: 350px; /* Max width for very wide small screens */
+        margin-bottom: 1rem;
+    }
+    .product-card:last-child {
+        margin-bottom: 0;
+    }
+
+    footer {
+        padding: 1.5rem 1rem;
+    }
+    footer p, footer div {
+        font-size: 0.9rem;
+    }
+}
+
+/* Small mobile phones adjustments (e.g., max-width: 480px) */
+@media (max-width: 480px) {
+    header {
+        padding: 0.75rem;
+    }
+    nav h1 {
+        font-size: 1.3rem;
+    }
+    .menu-toggle {
+        font-size: 1.3rem;
+    }
+    #hero h2 {
+        font-size: 1.5rem;
+    }
+    #hero p {
+        font-size: 0.85rem;
+    }
+    #product-grid > h2 {
+        font-size: 1.5rem;
+    }
+    .product-card {
+        width: 95%; /* Slightly more width for very small screens */
+    }
+    .product-card h3 {
+        font-size: 1.1rem;
+    }
+    .product-card p {
+        font-size: 1rem;
+    }
+    footer {
+        padding: 1rem 0.5rem;
+    }
+    footer p, footer div {
+        font-size: 0.8rem;
+    }
+}
